@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.example.administrator.text1.utils.view.FormLayout
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/update_bg"
+        app:base_on_width="true"
+        app:w_h_ratio="1.2">
+
+        <TextView
+            android:id="@+id/updateVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="V1.0.0.0"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:relative_height="0.1"
+            app:relative_left="0.45"
+            app:relative_top="0.2"
+            app:relative_width="0.5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="发现新版本"
+            android:textColor="@color/blue"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:relative_height="0.1"
+            app:relative_left="0"
+            app:relative_top="0.4"
+            app:relative_width="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更新内容:"
+            android:textColor="@color/font_black"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:relative_height="0.1"
+            app:relative_left="0.1"
+            app:relative_top="0.52"
+            app:relative_width="0.8" />
+
+        <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/recyclerView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:relative_height="0.3"-->
+        <!--app:relative_left="0.1"-->
+        <!--app:relative_top="0.6"-->
+        <!--app:relative_width="0.8" />-->
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:relative_height="0.26"
+            app:relative_left="0.1"
+            app:relative_top="0.62"
+            app:relative_width="0.8">
+
+            <TextView
+                android:id="@+id/updateContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1. 标详情页样式调整\r\n2. 投资流程优化\r\n3. 投资协议信息优化\r\n4. 图标活动化埋点\r\n5. 提现支行信息错误修复"
+                android:textColor="@color/font_dark"
+                android:textSize="15dp" />
+        </ScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_update_alpha"
+            app:relative_height="0.11"
+            app:relative_left="0.1"
+            app:relative_top="0.8"
+            app:relative_width="0.8" />
+
+        <TextView
+            android:id="@+id/updateBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/dialog_update_btn"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="立即更新"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:relative_height="0.16"
+            app:relative_left="0.2"
+            app:relative_top="0.96"
+            app:relative_width="0.6" />
+
+        <FrameLayout
+            android:id="@+id/updatePgressView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:relative_height="0.12"
+            app:relative_left="0.1"
+            app:relative_top="0.95"
+            app:relative_width="0.8">
+
+            <ProgressBar
+                android:id="@+id/updateProgess"
+                style="@style/UpdateProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:max="100"
+                android:progress="50" />
+
+            <TextView
+                android:id="@+id/updateTxtProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:text="0%"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+        </FrameLayout>
+    </com.example.administrator.text1.utils.view.FormLayout>
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="55dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="23dp"
+        android:src="@drawable/close" />
+</FrameLayout>

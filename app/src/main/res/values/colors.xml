@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- title文字 -->
+    <color name="titleTxtColor">#525252</color>
+
+    <!-- frg背景 -->
+    <color name="frgBgColor">#f8f8f8</color>
+
+    <!-- frg下划线颜色 -->
+    <color name="frgtitleColor">#e0e0e0</color>
+
+    <color name="horizontal_cut_line">#e0e0e0</color>
+    <!-- frg文本颜色 -->
+    <color name="frgTxtColor">#353535</color>
+
+    <!-- 首页顶部导航文字颜色选择 -->
+    <color name="homepage_txt_selector">#27a1e5</color>
+    <color name="homepage_txt_unselector">#868686</color>
+    <color name="homepage_txt_center">#808080</color>
+    <color name="homepage_txt_center_below">#c9c9c9</color>
+
+    <color name="user_info_set_color">#0086d1</color>
+    <color name="black_transparent">#50000000</color><!--黑色半透明-->
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="red">#ff0000</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="green">#00ff00</color>
+    <color name="blue">#27a1e5</color>
+    <color name="dark_blue">#034f79</color>
+    <color name="light_green">#69AC7D</color>
+    <color name="green_text">#0086d1</color>
+    <color name="black_txt">#555555</color>
+    <color name="grey">#c9c9c9</color>
+    <color name="orange_txt">#f25a2b</color>
+    <!-- 主背景颜色 -->
+    <color name="main_bg_color">#f2f2f3</color>
+    <!-- 顶部标题栏背景颜色 -->
+    <color name="top_title_bg_color">#242736</color>
+    <color name="top_title_bg_color2">#302736</color>
+
+    <!-- 绿色背景颜色 -->
+    <color name="green_bg_color">#0086d1</color>
+
+    <!-- text hint字体颜色 -->
+    <color name="text_color_hint">#cccccc</color>
+    <!-- 分割线颜色 -->
+    <color name="line_grey_color">#c4c4c4</color>
+    <!-- 半透明 -->
+    <color name="half_transparent">#3fffffff</color>
+    <color name="slidingmenu_select">#7fffffff</color>
+    <!-- 内容部分次级标题背景 -->
+    <color name="content_title_color">#999999</color>
+    <!-- 左边内容颜色 -->
+    <color name="text_left_color">#999999</color>
+    <!-- 右边内容颜色 -->
+    <color name="text_right_color">#666666</color>
+    <!-- 透明色 -->
+    <color name="transparent">#00000000</color>
+    <color name="message_titile_text">#010101</color>
+    <color name="message_titile_select_text">#332f2f</color>
+    <color name="color_e4e4e9">#e4e4e9</color>
+    <color name="color_ff6600">#ff6600</color>
+    <color name="color_016723">#016723</color>
+    <color name="color_32b17e">#32b17e</color>
+    <color name="color_22ac4f">#22ac4f</color>
+    <color name="rich_coin_pop_normal">#006020</color>
+    <color name="rich_coin_pop_pressed">#176f34</color>
+    <color name="rich_coin_pop_divide">#079e48</color>
+    <color name="color_e04e1e">#e04e1e</color>
+    <!-- 选择图片取消按钮颜色 -->
+    <color name="select_pic_cancel">#a5a5a5</color>
+
+    <color name="color_28a050">#28a050</color>
+
+
+
+    <color name="loading_color_1">#3BB7E9</color>
+    <color name="loading_color_2">#FE8C1D</color>
+    <color name="loading_color_3">#37BC9B</color>
+    <color name="loading_color_4">#FD6018</color>
+    <color name="loading_color_5">#000000</color>
+
+
+    <!--通用字体颜色定义-->
+    <color name="font_black">#353535</color> <!--标题颜色 -->
+    <color name="font_dark">#525252</color> <!--标题颜色 -->
+    <color name="font_normal">#808080</color><!--正文颜色-->
+    <color name="font_normal_light">#808080</color><!--正文颜色-->
+    <color name="font_gray">#C9C9C9</color><!--辅助信息字体颜色-->
+    <color name="font_hint">#cccccc</color><!--输入框提示颜色-->
+    <color name="font_orange">#f25a2b</color><!--黄色醒目色-->
+    <color name="font_white">#FFFFFF</color>
+    <color name="font_blue_dark">#0086d1</color><!--蓝色主题色-->
+    <color name="font_blue_light">#27a1e5</color><!--蓝色主题色-->
+    <color name="font_white_transparent">#80FFFFFF</color><!--白色半透明-->
+</resources>
