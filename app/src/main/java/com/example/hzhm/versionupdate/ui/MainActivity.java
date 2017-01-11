@@ -1,13 +1,12 @@
 package com.example.hzhm.versionupdate.ui;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
 import com.example.hzhm.versionupdate.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private TextView txtTitle;
     private TextView txtContent;

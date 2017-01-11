@@ -1,4 +1,4 @@
-package com.example.hzhm.versionupdate.utils.serves.utils.downloadmanager;
+package com.example.hzhm.versionupdate.utils.downloadmanager;
 
 import android.os.Process;
 
@@ -43,7 +43,7 @@ public class DownloadDispatcher extends Thread {
     /**
      * The queue of download requests to service.
      */
-    private final BlockingQueue<DownloadRequest> mQueue;
+    private final BlockingQueue<com.example.hzhm.versionupdate.utils.downloadmanager.DownloadRequest> mQueue;
     private final int HTTP_REQUESTED_RANGE_NOT_SATISFIABLE = 416;
     private final int HTTP_TEMP_REDIRECT = 307;
     boolean shouldAllowRedirects = true;
@@ -55,11 +55,11 @@ public class DownloadDispatcher extends Thread {
     /**
      * Current Download request that this dispatcher is working
      */
-    private DownloadRequest mRequest;
+    private com.example.hzhm.versionupdate.utils.downloadmanager.DownloadRequest mRequest;
     /**
      * To Delivery call back response on main thread
      */
-    private DownloadRequestQueue.CallBackDelivery mDelivery;
+    private com.example.hzhm.versionupdate.utils.downloadmanager.DownloadRequestQueue.CallBackDelivery mDelivery;
     /**
      * How many times redirects happened during a download request.
      */
@@ -69,8 +69,8 @@ public class DownloadDispatcher extends Thread {
     /**
      * Constructor take the dependency (DownloadRequest queue) that all the Dispatcher needs
      */
-    public DownloadDispatcher(BlockingQueue<DownloadRequest> queue,
-                              DownloadRequestQueue.CallBackDelivery delivery) {
+    public DownloadDispatcher(BlockingQueue<com.example.hzhm.versionupdate.utils.downloadmanager.DownloadRequest> queue,
+                              com.example.hzhm.versionupdate.utils.downloadmanager.DownloadRequestQueue.CallBackDelivery delivery) {
         mQueue = queue;
         mDelivery = delivery;
     }
@@ -84,14 +84,14 @@ public class DownloadDispatcher extends Thread {
                 mRequest = mQueue.take();
                 mRedirectionCount = 0;
 //                LogUtil.v(TAG, "Download initiated for " + mRequest.getDownloadId());
-                updateDownloadState(DownloadManager.STATUS_STARTED);
+                updateDownloadState(com.example.hzhm.versionupdate.utils.downloadmanager.DownloadManager.STATUS_STARTED);
                 executeDownload(mRequest.getUri().toString());
             } catch (Exception e) {
                 // We may have been interrupted because it was time to quit.
                 if (mQuit) {
                     if (mRequest != null) {
                         mRequest.finish();
-                        updateDownloadFailed(DownloadManager.ERROR_DOWNLOAD_CANCELLED, "Download cancelled");
+                        updateDownloadFailed(com.example.hzhm.versionupdate.utils.downloadmanager.DownloadManager.ERROR_DOWNLOAD_CANCELLED, "Download cancelled");
                         mTimer.cancel();
                     }
                     return;
@@ -112,7 +112,7 @@ public class DownloadDispatcher extends Thread {
         try {
             url = new URL(downloadUrl);
         } catch (Exception e) {
-            updateDownloadFailed(DownloadManager.ERROR_MALFORMED_URI, "MalformedURLException: URI passed is malformed.");
+            updateDownloadFailed(com.example.hzhm.versionupdate.utils.downloadmanager.DownloadManager.ERROR_MALFORMED_URI, "MalformedURLException: URI passed is malformed.");
             return;
         }
 
@@ -133,7 +133,7 @@ public class DownloadDispatcher extends Thread {
 
             // Status Connecting is set here before
             // urlConnection is trying to connect to destination.
-            updateDownloadState(DownloadManager.STATUS_CONNECTING);
+            updateDownloadState(com.example.hzhm.versionupdate.utils.downloadmanager.DownloadManager.STATUS_CONNECTING);
 
             final int responseCode = conn.getResponseCode();
 
@@ -145,7 +145,7 @@ public class DownloadDispatcher extends Thread {
                     if (readResponseHeaders(conn) == 1) {
                         transferData(conn);
                     } else {
-                        updateDownloadFailed(DownloadManager.ERROR_DOWNLOAD_SIZE_UNKNOWN, "Can't know size of download, giving up");
+                        updateDownloadFailed(com.example.hzhm.versionupdate.utils.downloadmanager.DownloadManager.ERROR_DOWNLOAD_SIZE_UNKNOWN, "Can't know size of download, giving up");
                     }
                     return;
                 case HTTP_MOVED_PERM:
@@ -254,7 +254,7 @@ public class DownloadDispatcher extends Thread {
             if (mRequest.isCanceled()) {
 //                LogUtil.v(TAG, "Stopping the download as Download Request is cancelled for Downloaded Id " + mRequest.getDownloadId());
                 mRequest.finish();
-                updateDownloadFailed(DownloadManager.ERROR_DOWNLOAD_CANCELLED, "Download cancelled");
+                updateDownloadFailed(com.example.hzhm.versionupdate.utils.downloadmanager.DownloadManager.ERROR_DOWNLOAD_CANCELLED, "Download cancelled");
                 return;
             }
             int bytesRead = readFromResponse(data, in);
@@ -328,7 +328,7 @@ public class DownloadDispatcher extends Thread {
     }
 
     private void attemptRetryOnTimeOutException() {
-        updateDownloadState(DownloadManager.STATUS_RETRYING);
+        updateDownloadState(com.example.hzhm.versionupdate.utils.downloadmanager.DownloadManager.STATUS_RETRYING);
         final RetryPolicy retryPolicy = mRequest.getRetryPolicy();
         try {
             retryPolicy.retry();
@@ -340,7 +340,7 @@ public class DownloadDispatcher extends Thread {
             }, retryPolicy.getCurrentTimeout());
         } catch (RetryError e) {
             // Update download failed.
-            updateDownloadFailed(DownloadManager.ERROR_CONNECTION_TIMEOUT_AFTER_RETRIES,
+            updateDownloadFailed(com.example.hzhm.versionupdate.utils.downloadmanager.DownloadManager.ERROR_CONNECTION_TIMEOUT_AFTER_RETRIES,
                     "Connection time out after maximum retires attempted");
         }
     }

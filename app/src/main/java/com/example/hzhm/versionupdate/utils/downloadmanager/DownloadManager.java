@@ -1,4 +1,4 @@
-package com.example.hzhm.versionupdate.utils.serves.utils.downloadmanager;
+package com.example.hzhm.versionupdate.utils.downloadmanager;
 
 public interface DownloadManager {
 
@@ -84,7 +84,7 @@ public interface DownloadManager {
      */
     public final static int ERROR_CONNECTION_TIMEOUT_AFTER_RETRIES = 1009;
 
-    public int add(DownloadRequest request);
+    public int add(com.example.hzhm.versionupdate.utils.downloadmanager.DownloadRequest request);
 
     public int cancel(int downloadId);
 

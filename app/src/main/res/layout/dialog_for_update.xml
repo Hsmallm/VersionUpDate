@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.administrator.text1.utils.view.FormLayout
+    <com.example.hzhm.versionupdate.utils.serves.utils.view.FormLayout
         android:layout_width="280dp"
         android:layout_height="match_parent"
         android:layout_gravity="center"
@@ -131,7 +131,7 @@
                 android:textColor="@color/white"
                 android:textSize="15dp" />
         </FrameLayout>
-    </com.example.administrator.text1.utils.view.FormLayout>
+    </com.example.hzhm.versionupdate.utils.serves.utils.view.FormLayout>>
 
     <ImageView
         android:id="@+id/close"

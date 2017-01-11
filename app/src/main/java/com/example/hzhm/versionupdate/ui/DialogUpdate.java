@@ -30,15 +30,19 @@ public class DialogUpdate extends Dialog {
     public DialogUpdate(Context context, int themeResId) {
         super(context, R.style.DialogTransletTheme);
         setCancelable(false);
-        View dialog = LayoutInflater.from(context).inflate(R.layout.dialog_for_update, null);
-        setContentView(dialog);
-        imgClose = dialog.findViewById(R.id.close);
-        txtVersion = (TextView) dialog.findViewById(R.id.updateVersion);
-        txtContent = (TextView) dialog.findViewById(R.id.updateContent);
-        txtUpdate = (TextView) dialog.findViewById(R.id.updateBtn);
-        viewProgress = dialog.findViewById(R.id.updatePgressView);
-        progressbBar = (ProgressBar) dialog.findViewById(R.id.updateProgess);
-        txtProgress = (TextView) dialog.findViewById(R.id.updateTxtProgress);
+        try {
+            View dialog = LayoutInflater.from(context).inflate(R.layout.dialog_for_update, null);
+            setContentView(dialog);
+            imgClose = dialog.findViewById(R.id.close);
+            txtVersion = (TextView) dialog.findViewById(R.id.updateVersion);
+            txtContent = (TextView) dialog.findViewById(R.id.updateContent);
+            txtUpdate = (TextView) dialog.findViewById(R.id.updateBtn);
+            viewProgress = dialog.findViewById(R.id.updatePgressView);
+            progressbBar = (ProgressBar) dialog.findViewById(R.id.updateProgess);
+            txtProgress = (TextView) dialog.findViewById(R.id.updateTxtProgress);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**

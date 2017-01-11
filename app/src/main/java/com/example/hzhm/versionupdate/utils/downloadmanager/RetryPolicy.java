@@ -1,4 +1,4 @@
-package com.example.hzhm.versionupdate.utils.serves.utils.downloadmanager;
+package com.example.hzhm.versionupdate.utils.downloadmanager;
 
 /**
  * Created by maniselvaraj on 15/4/15.
@@ -21,7 +21,7 @@ public interface RetryPolicy {
     public float getBackOffMultiplier();
 
 
-    public void retry() throws RetryError;
+    public void retry() throws com.example.hzhm.versionupdate.utils.downloadmanager.RetryError;
 
 
 }

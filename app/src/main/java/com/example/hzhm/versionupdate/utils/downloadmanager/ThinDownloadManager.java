@@ -1,17 +1,17 @@
-package com.example.hzhm.versionupdate.utils.serves.utils.downloadmanager;
+package com.example.hzhm.versionupdate.utils.downloadmanager;
 
 public class ThinDownloadManager implements DownloadManager {
 
     /**
      * Download request queue takes care of handling the request based on priority.
      */
-    private DownloadRequestQueue mRequestQueue;
+    private com.example.hzhm.versionupdate.utils.downloadmanager.DownloadRequestQueue mRequestQueue;
 
     /**
      * Default constructor
      */
     public ThinDownloadManager() {
-        mRequestQueue = new DownloadRequestQueue();
+        mRequestQueue = new com.example.hzhm.versionupdate.utils.downloadmanager.DownloadRequestQueue();
         mRequestQueue.start();
     }
 
@@ -20,7 +20,7 @@ public class ThinDownloadManager implements DownloadManager {
      * Any number higher than four or less than one wont be respected.
      **/
     public ThinDownloadManager(int threadPoolSize) {
-        mRequestQueue = new DownloadRequestQueue(threadPoolSize);
+        mRequestQueue = new com.example.hzhm.versionupdate.utils.downloadmanager.DownloadRequestQueue(threadPoolSize);
         mRequestQueue.start();
     }
 
@@ -34,7 +34,7 @@ public class ThinDownloadManager implements DownloadManager {
      * @throws IllegalArgumentException
      */
     @Override
-    public int add(DownloadRequest request) throws IllegalArgumentException {
+    public int add(com.example.hzhm.versionupdate.utils.downloadmanager.DownloadRequest request) throws IllegalArgumentException {
         if (request == null) {
             throw new IllegalArgumentException("DownloadRequest cannot be null");
         }

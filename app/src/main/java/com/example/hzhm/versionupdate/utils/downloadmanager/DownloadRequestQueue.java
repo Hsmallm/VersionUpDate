@@ -1,4 +1,4 @@
-package com.example.hzhm.versionupdate.utils.serves.utils.downloadmanager;
+package com.example.hzhm.versionupdate.utils.downloadmanager;
 
 import android.os.Handler;
 import android.os.Looper;

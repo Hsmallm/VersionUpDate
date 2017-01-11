@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
-import com.example.hzhm.versionupdate.utils.serves.utils.downloadmanager.DefaultRetryPolicy;
-import com.example.hzhm.versionupdate.utils.serves.utils.downloadmanager.DownloadRequest;
-import com.example.hzhm.versionupdate.utils.serves.utils.downloadmanager.DownloadStatusListener;
-import com.example.hzhm.versionupdate.utils.serves.utils.downloadmanager.ThinDownloadManager;
 
+import com.example.hzhm.versionupdate.utils.downloadmanager.DefaultRetryPolicy;
+import com.example.hzhm.versionupdate.utils.downloadmanager.DownloadRequest;
+import com.example.hzhm.versionupdate.utils.downloadmanager.DownloadStatusListener;
+import com.example.hzhm.versionupdate.utils.downloadmanager.ThinDownloadManager;
 
 /**
  * Created by hzhm on 2017/1/6.

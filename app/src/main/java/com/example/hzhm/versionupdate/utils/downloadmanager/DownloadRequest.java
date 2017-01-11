@@ -1,4 +1,4 @@
-package com.example.hzhm.versionupdate.utils.serves.utils.downloadmanager;
+package com.example.hzhm.versionupdate.utils.downloadmanager;
 
 import android.net.Uri;
 
@@ -37,9 +37,9 @@ public class DownloadRequest implements Comparable<DownloadRequest> {
      */
     private boolean mCanceled = false;
 
-    private DownloadRequestQueue mRequestQueue;
+    private com.example.hzhm.versionupdate.utils.downloadmanager.DownloadRequestQueue mRequestQueue;
 
-    private DownloadStatusListener mDownloadListener;
+    private com.example.hzhm.versionupdate.utils.downloadmanager.DownloadStatusListener mDownloadListener;
 
     private HashMap<String, String> mCustomHeader;
     private Priority mPriority = Priority.NORMAL;
@@ -91,7 +91,7 @@ public class DownloadRequest implements Comparable<DownloadRequest> {
      * Associates this request with the given queue. The request queue will be notified when this
      * request has finished.
      */
-    void setDownloadRequestQueue(DownloadRequestQueue downloadQueue) {
+    void setDownloadRequestQueue(com.example.hzhm.versionupdate.utils.downloadmanager.DownloadRequestQueue downloadQueue) {
         mRequestQueue = downloadQueue;
     }
 
@@ -123,11 +123,11 @@ public class DownloadRequest implements Comparable<DownloadRequest> {
         this.mDownloadState = mDownloadState;
     }
 
-    DownloadStatusListener getDownloadListener() {
+    com.example.hzhm.versionupdate.utils.downloadmanager.DownloadStatusListener getDownloadListener() {
         return mDownloadListener;
     }
 
-    public DownloadRequest setDownloadListener(DownloadStatusListener downloadListener) {
+    public DownloadRequest setDownloadListener(com.example.hzhm.versionupdate.utils.downloadmanager.DownloadStatusListener downloadListener) {
         this.mDownloadListener = downloadListener;
         return this;
     }

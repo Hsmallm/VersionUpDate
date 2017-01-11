@@ -41,7 +41,7 @@ public class HeaderConfigInterceptor implements Interceptor{
             provider = telephonyManager.getNetworkOperatorName();
             osVersion = Build.VERSION.CODENAME;
             deveiceId = telephonyManager.getDeviceId();
-            ApplicationInfo appInfo = c.getPackageManager().getApplicationInfo(BuildConfig.APPLICATION_ID, PackageManager.GET_META_DATA);
+            ApplicationInfo appInfo = c.getPackageManager().getApplicationInfo(com.example.hzhm.versionupdate.BuildConfig.APPLICATION_ID, PackageManager.GET_META_DATA);
             channel = appInfo.metaData.getString("UMENG_CHANNEL");
         } catch (Exception e) {
             e.printStackTrace();

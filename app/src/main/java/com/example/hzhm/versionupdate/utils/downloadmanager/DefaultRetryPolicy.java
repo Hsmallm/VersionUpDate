@@ -1,9 +1,9 @@
-package com.example.hzhm.versionupdate.utils.serves.utils.downloadmanager;
+package com.example.hzhm.versionupdate.utils.downloadmanager;
 
 /**
  * Created by maniselvaraj on 15/4/15.
  */
-public class DefaultRetryPolicy implements RetryPolicy {
+public class DefaultRetryPolicy implements com.example.hzhm.versionupdate.utils.downloadmanager.RetryPolicy {
 
     /**
      * The default socket timeout in milliseconds
@@ -71,11 +71,11 @@ public class DefaultRetryPolicy implements RetryPolicy {
     }
 
     @Override
-    public void retry() throws RetryError {
+    public void retry() throws com.example.hzhm.versionupdate.utils.downloadmanager.RetryError {
         mCurrentRetryCount++;
         mCurrentTimeoutMs += (mCurrentTimeoutMs * mBackoffMultiplier);
         if (!hasAttemptRemaining()) {
-            throw new RetryError();
+            throw new com.example.hzhm.versionupdate.utils.downloadmanager.RetryError();
         }
     }
 
