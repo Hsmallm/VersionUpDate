@@ -22,8 +22,9 @@ import okio.Buffer;
 import okio.BufferedSource;
 
 /**
- * TODO
  * Created by hzhm on 2016/8/22.
+ *
+ * 功能描述：Log日志打印拦截器
  */
 public class HttpLoggingInterceptor implements Interceptor {
     private static final Charset UTF8 = Charset.forName("UTF-8");

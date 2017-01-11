@@ -8,6 +8,10 @@ import java.net.HttpCookie;
 
 /**
  * Created by hzhm on 2016/8/22.
+ *
+ * 功能描述：序列化httpCookie...
+ * 将Cookie对象输出为ObjectStream
+   将ObjectStream序列化成Cookie对象
  */
 public class SerializableHttpCookie implements Serializable {
 

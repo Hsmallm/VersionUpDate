@@ -6,6 +6,8 @@ import com.example.hzhm.versionupdate.BuildConfig;
 
 /**
  * Created by hzhm on 2016/8/22.
+ *
+ * 功能描述：服务器地址的相关配置...
  */
 public class ServerConfig {
 

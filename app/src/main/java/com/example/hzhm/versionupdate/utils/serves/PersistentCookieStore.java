@@ -26,6 +26,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by hzhm on 2016/8/22.
+ *
+ * 功能描述：根据一定的规则去缓存或者获取Cookie:
  */
 public class PersistentCookieStore implements CookieStore{
     /**

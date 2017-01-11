@@ -21,6 +21,8 @@ import okhttp3.Response;
 
 /**
  * Created by hzhm on 2016/8/22.
+ *
+ * 功能描述：http请求头部相关配置拦截器
  */
 public class HeaderConfigInterceptor implements Interceptor{
 

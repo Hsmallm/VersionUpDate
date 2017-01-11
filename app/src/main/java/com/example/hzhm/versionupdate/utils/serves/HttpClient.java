@@ -11,8 +11,9 @@ import okhttp3.CookieJar;
 import okhttp3.OkHttpClient;
 
 /**
- * TODO
  * Created by hzhm on 2016/8/22.
+ *
+ * 功能描述：设置OkHttpClient相关配置...
  */
 public class HttpClient {
     private static OkHttpClient instance;

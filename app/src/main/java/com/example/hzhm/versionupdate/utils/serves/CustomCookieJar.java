@@ -18,8 +18,9 @@ import static okhttp3.internal.Util.delimiterOffset;
 import static okhttp3.internal.Util.trimSubstring;
 
 /**
- * TODO
  * Created by hzhm on 2016/8/22.
+ *
+ * 功能描述：Cookies管理及持久化
  */
 public class CustomCookieJar implements CookieJar {
 
