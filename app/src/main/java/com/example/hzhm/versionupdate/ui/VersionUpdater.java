@@ -2,24 +2,22 @@ package com.example.hzhm.versionupdate.ui;
 
 import android.app.Activity;
 import android.app.NotificationManager;
-import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Environment;
-import android.support.v4.app.NotificationCompat;
-import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.hzhm.versionupdate.BuildConfig;
-import com.example.hzhm.versionupdate.R;
 import com.example.hzhm.versionupdate.api.VersionUpdateApi;
 import com.example.hzhm.versionupdate.model.VersionUpdateModel;
+import com.example.hzhm.versionupdate.utils.ApkDownloadUtil;
 import com.example.hzhm.versionupdate.utils.ThApplication;
 import com.example.hzhm.versionupdate.utils.ToastUtil;
 import com.example.hzhm.versionupdate.utils.serves.RestCallback;
 import com.example.hzhm.versionupdate.utils.serves.ServerResultCode;
+
 import java.io.File;
 
 /**
@@ -28,6 +26,7 @@ import java.io.File;
  * 功能描述：版本更新工具类...
  */
 public class VersionUpdater {
+    private static final int NOTIFICATION_IS_ON = 0x1;
     private Activity activity;
     private int lastProgress;
     private String filePath;
@@ -64,7 +63,7 @@ public class VersionUpdater {
                     String version = model.result.currentVersion;
                     String minVersion = model.result.allowLowestVersion;
                     String currentV = BuildConfig.VERSION_NAME;
-//                    LogUtil.e("errorCode", "version:" + version + " minVersion:" + minVersion + " currentVersion:" + currentV);
+                    Log.e("errorCode", "version:" + version + " minVersion:" + minVersion + " currentVersion:" + currentV);
                     //---情况一：判断传入的当前Activity是否含有提示文本控件...
                     if (viewInSettingPage != null) {
                         if (!model.result.forceUpdate.isEmpty()) {
@@ -107,13 +106,13 @@ public class VersionUpdater {
                         quietDownLoad(downLoadUrl, model.result.currentVersion);
                     } else {
                         //无需更新
-//                        LogUtil.i("errorCode", " 无需更新");
+                        Log.i("errorCode", " 无需更新");
                         if (afterClick) {
                             ToastUtil.showNormalToast("当前已是最新版本");
                         }
                     }
                 } catch (Exception e) {
-//                    LogUtil.e(e);
+                    Log.e("e",e+"");
                 }
             }
 
@@ -134,7 +133,7 @@ public class VersionUpdater {
             updateDialog = new DialogUpdate(activity);
 
         //新本的apk已经下载完成，点击安装
-        if (checkNewVersionApkIsExist(version)) {
+        if (ApkDownloadUtil.checkNewVersionApkIsExist(filePath,version)) {
             ToastUtil.showNormalToast("您已下载过该版本，立即安装即可");
             updateDialog.onResumeWhileDownloadSuccess(new View.OnClickListener() {
                 @Override
@@ -151,7 +150,7 @@ public class VersionUpdater {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (!existSDCard()) {
+                        if (!ApkDownloadUtil.existSDCard()) {
                             ToastUtil.showNormalToast("存储卡没有正确安装,请先确认安装");
                             return;
                         }
@@ -181,7 +180,7 @@ public class VersionUpdater {
      * @param downLoadUrl
      */
     private void quietDownLoad(String downLoadUrl, String version) {
-        if (checkNewVersionApkIsExist(version)) {//新本的apk已经下载完成，点击安装
+        if (ApkDownloadUtil.checkNewVersionApkIsExist(filePath,version)) {//新本的apk已经下载完成，点击安装
             ToastUtil.showNormalToast("您已下载过该版本，立即安装即可");
             updateDialog.onResumeWhileDownloadSuccess(new View.OnClickListener() {
                 @Override
@@ -217,16 +216,7 @@ public class VersionUpdater {
      * @param dialog
      */
     private void downLoad(String downLoadUrl, final DialogUpdate dialog) {
-        final int NOTIFICATION_IS_ON = 0x1;
-        final NotificationManager nm = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
-        final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(activity)
-                .setSmallIcon(R.drawable.ic_launcher)
-                .setContentTitle(activity.getString(R.string.app_name))
-                .setContentText("正在下载更新...")
-                .setAutoCancel(false)
-                .setOngoing(true);
-        nm.notify(NOTIFICATION_IS_ON, notificationBuilder.build());
-
+        final NotificationManager nm = ApkDownloadUtil.setNotificationStatus(activity,NOTIFICATION_IS_ON);
         filePath = ThApplication.getInstance().getExternalCacheDir() + "/TRC-" + BuildConfig.VERSION_NAME + "-" + System.currentTimeMillis() + ".apk";
         ApkDownloadUtil.downloadApk(Uri.parse(downLoadUrl), Uri.fromFile(new File(filePath)), new ApkDownloadUtil.DownloadListener() {
 
@@ -240,7 +230,7 @@ public class VersionUpdater {
                     dialog.whenCompleted();
                     ApkDownloadUtil.installApk(activity, downloadUri);
                 } catch (Exception e) {
-//                    LogUtil.e(e);
+                    Log.e("e",e+"");
                 }
             }
 
@@ -253,7 +243,7 @@ public class VersionUpdater {
                     ToastUtil.showNormalToast("下载失败,点击重试");
                     dialog.whenFailed();
                 } catch (Exception e) {
-//                    LogUtil.e(e);
+                    Log.e("e",e+"");
                 }
             }
 
@@ -263,37 +253,9 @@ public class VersionUpdater {
                 if (lastProgress != progress) {
                     dialog.setProgress(progress);
                     lastProgress = progress;
-//                    LogUtil.i("errorCode", "progress:" + progress);
+                    Log.i("errorCode", "progress:" + progress);
                 }
             }
         });
-    }
-
-    /**
-     * 检查最新版本的apk是否已经安装...
-     * @return 新版本apk已经下载完成true
-     */
-    private boolean checkNewVersionApkIsExist(String version) {
-        try {
-            if (!TextUtils.isEmpty(filePath)) {
-                if (new File(filePath).exists()) {
-                    String[] arr = filePath.split("-");
-                    if (!version.endsWith(arr[1])) {
-                        return true;
-                    }
-                }
-            }
-        } catch (Exception e) {
-//            LogUtil.e(e);
-        }
-        return false;
-    }
-
-    /**
-     * 检查SD卡是否存在...
-     * @return
-     */
-    private boolean existSDCard() {
-        return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
     }
 }
